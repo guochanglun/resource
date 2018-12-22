@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+		<meta charset="utf-8">
+		<link href="../static/css/login.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	 <!-----start-main---->
+	 <div class="main">
+		<div class="login-form">
+			<h1>Member Login</h1>
+			<div class="head">
+				<img src="../static/images/user.png"/>
+			</div>
+			<form action="{{ url_for('login_do') }}" method="post">
+					<input name="username" type="text" class="text" placeholder="username"/>
+					<input name="password" type="password" placeholder="password" />
+					<div class="submit">
+                        <input type="submit" value="LOGIN"/>
+                    </div>
+				<p><a href="javascript:alert('忘了就忘了吧')">Forgot Password ?</a></p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

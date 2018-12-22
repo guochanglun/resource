@@ -1,0 +1,96 @@
+<html><head> 
+<meta charset="gb2312">
+<link href="../static/css/wheel.css" rel="stylesheet">
+<title>My Information</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head> 
+<body>
+<div id="gears">
+	<div id="gears-static"></div>
+	<div id="gear-system-1">
+		<div class="shadow" id="shadow15"></div>
+		<div id="gear15"></div>
+		<div class="shadow" id="shadow14"></div>
+		<div id="gear14"></div>
+		<div class="shadow" id="shadow13"></div>
+		<div id="gear13"></div>
+	</div>
+	<div id="gear-system-2">
+		<div class="shadow" id="shadow10"></div>
+		<div id="gear10"></div>
+		<div class="shadow" id="shadow3"></div>
+		<div id="gear3"></div>
+	</div>
+	<div id="gear-system-3">
+		<div class="shadow" id="shadow9"></div>
+		<div id="gear9"></div>
+		<div class="shadow" id="shadow7"></div>
+		<div id="gear7"></div>
+	</div>
+	<div id="gear-system-4">
+		<div class="shadow" id="shadow6"></div>
+		<div id="gear6"></div>
+		<div id="gear4"></div>
+	</div>
+	<div id="gear-system-5">
+		<div class="shadow" id="shadow12"></div>
+		<div id="gear12"></div>
+		<div class="shadow" id="shadow11"></div>
+		<div id="gear11"></div>
+		<div class="shadow" id="shadow8"></div>
+		<div id="gear8"></div>
+	</div>
+	<div class="shadow" id="shadow1"></div>
+	<div id="gear1"></div>
+	<div id="gear-system-6">
+		<div class="shadow" id="shadow5"></div>
+		<div id="gear5"></div>
+		<div id="gear2"></div>
+	</div>
+	<div class="shadow" id="shadowweight"></div>
+	<div id="chain-circle"></div>
+	<div id="chain"></div>
+	<div id="weight"></div>
+</div>
+
+<div class="full">
+	<div class="row" style="margin-top: 10%">
+		<div class="col s6 offset-s5">
+            <form action="{{ url_for('mine_do') }}" method="post">
+                <input type="hidden" name="id" value="{{ user.id }}">
+			<div class="card">
+		        <div class="card-content">
+		          <span class="card-title">My Information</span>
+		         	<div class="input-field">
+			          <i class="material-icons prefix">account_circle</i>
+			          <input id="username" name="username" type="text" class="validate" value="{{ user.username }}">
+			          <label for="username">username</label>
+			        </div>
+			        <div class="input-field">
+			          <i class="material-icons prefix">visibility_off</i>
+			          <input id="password" name="password" type="password" class="validate" value="{{ user.password }}">
+			          <label for="password">password</label>
+			        </div>
+			        <div class="input-field">
+			        	<i class="material-icons prefix">description</i>
+			          <textarea name="desc" id="textarea" class="materialize-textarea">{{ user.desc }}</textarea>
+			          <label for="textarea">Description</label>
+			        </div>
+		        </div>
+		        <div class="card-action">
+		          <a onclick="history.back()" class=" blue-grey lighten-5 darken-2 waves-effect waves-light btn"><i class="material-icons left">backspace</i>Cancel and Back</a>
+                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">edit</i>Save Change</button>
+		        </div>
+		    </div>
+            </form>
+		</div>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    M.AutoInit()
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+.song{
+	width: 300px;
+	height: 80px;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, .6);
+	box-sizing: content-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 5px;
+    overflow: hidden;
+	box-shadow: 5px 5px 5px #666;
+}
+.song #avatar{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+    background: url('../images/u=1766255438,1056378374&fm=26&gp=0.jpg') no-repeat;
+    background-size: cover;
+	cursor: move;
+}
+.song .controls{
+	position: absolute;
+	top: 0;
+	left: 80px;
+	width: 220px;
+	height: 80px;
+	margin: 0;
+	padding: 0;
+	border-radius: 0 10px 10px 0;
+}
+.song .name{
+	font-size: 14px;
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	top: 15px;
+	text-align: center;
+	left: 20px;
+}
+.song .icon{
+	width: 25px;
+	height: 25px;
+	top: 47px;
+	cursor: pointer;
+	position: absolute;
+}
+.song .left{
+	left: 35px;
+}
+.song .center{
+	left: 95px;
+}
+.song .right{
+	left: 155px;
+}
+.song audio{
+    visibility: hidden;
+}

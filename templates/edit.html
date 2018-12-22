@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Add Resource</title>
+	<link rel="stylesheet" href="../static/editor.md-master/css/editormd.min.css" />
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+		html, body{
+			height: 100%;
+		}
+		.row{
+			width: 80%;
+			margin-left: 10%;
+		}
+	</style>
+</head>
+<body>
+
+<div class="row">
+	<div class="input-field inline col s10">
+	  <input id="title" type="text" class="validate">
+	  <label for="title">标题</label>
+	</div>
+	<div class="input-field col s2">
+	  <a id="submit" class="waves-effect waves-light btn">Submit</a>
+	</div>
+</div>
+<div id="editormd">
+    <textarea id="markdown" style="display:none;">编辑文章.....</textarea>
+</div>
+
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="../static/editor.md-master/editormd.min.js"></script>
+<script src="../static/js/layer/layer.js"></script>
+<script type="text/javascript">
+	M.AutoInit();
+	$(function() {
+	    var editor = editormd("editormd", {
+	        path : "../static/editor.md-master/lib/" // Autoload modules mode, codemirror, marked... dependents libs path
+	        ,width: '95%'
+	        ,height: '83%'
+            ,saveHTMLToTextarea : true
+            ,toolbarIcons: function () {
+                return [
+                    "undo", "redo",
+                    "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase",
+                    "list-ul", "list-ol", "hr",
+                    "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime",
+                    "goto-line", "preview",  "clear", "search",
+                    "help", "info"
+                ]
+            }
+	    });
+	    $('#submit').click(function () {
+            let markdown = editor.getMarkdown();
+            let html = editor.getHTML();
+            let title = $('#title').val();
+            $.post("{{ url_for('edit_do') }}", {title: title, markdown: markdown, html: html}, function (data) {
+                data = JSON.parse(data);
+                if(data.msg === 'success'){
+                    layer.confirm('提交成功，回首页吧？', {
+                      btn: ['遵旨'] //按钮
+                    }, function() {
+                        window.location = "{{ url_for('index') }}"
+                    });
+                }else {
+                    layer.alert('problems', {icon: 6});
+                }
+            });
+        });
+	});
+</script>
+</body>
+</html>
